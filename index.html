@@ -21,59 +21,81 @@
             --font-sans: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* RESET */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background-color: var(--bg-main); color: var(--text-main); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* TELA DE LOGIN (BARREIRA PREMIUM) */
+        /* LOGIN */
         #login-screen { position: fixed; inset: 0; background-color: var(--bg-main); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; padding: 20px; text-align: center; }
         .login-box { background-color: var(--bg-card); padding: 40px; border-radius: 16px; border: 1px solid rgba(197, 168, 128, 0.2); max-width: 400px; width: 100%; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
-        .login-logo { font-family: var(--font-display); font-size: 24px; color: var(--gold); margin-bottom: 8px; letter-spacing: 0.1em; }
+        .login-logo { font-family: var(--font-display); font-size: 28px; color: var(--gold); margin-bottom: 8px; letter-spacing: 0.1em; }
         .login-box p { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; }
-        .login-input { width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid #374151; background-color: rgba(0,0,0,0.2); color: white; font-family: var(--font-sans); margin-bottom: 16px; outline: none; }
+        .login-input { width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid #374151; background-color: rgba(0,0,0,0.2); color: white; font-family: var(--font-sans); margin-bottom: 16px; outline: none; text-align: center; letter-spacing: 2px;}
         .login-input:focus { border-color: var(--gold); }
         .btn-gold { width: 100%; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--bg-main); font-weight: 700; padding: 12px; border-radius: 8px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; font-family: var(--font-sans); transition: opacity 0.2s; }
         .btn-gold:hover { opacity: 0.9; }
         #login-error { color: var(--danger); font-size: 12px; margin-top: 12px; display: none; }
 
-        /* ESTRUTURA DO APP */
-        #app-container { display: none; flex: 1; max-width: 1000px; margin: 0 auto; width: 100%; padding: 24px; }
-        
-        /* HEADER */
+        /* APP */
+        #app-container { display: none; flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; padding: 32px 24px; }
         header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid rgba(197, 168, 128, 0.1); margin-bottom: 32px; }
-        .brand h1 { font-family: var(--font-display); font-size: 20px; color: var(--gold); }
-        .brand span { font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; }
+        .brand h1 { font-family: var(--font-display); font-size: 24px; color: var(--gold); }
+        .brand span { font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
         .user-stats { display: flex; gap: 16px; align-items: center; }
-        .streak-badge { background-color: rgba(197, 168, 128, 0.1); border: 1px solid rgba(197, 168, 128, 0.3); color: var(--gold); padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .premium-badge { background: linear-gradient(135deg, rgba(197, 168, 128, 0.1) 0%, rgba(197, 168, 128, 0.2) 100%); border: 1px solid rgba(197, 168, 128, 0.3); color: var(--gold); padding: 6px 16px; border-radius: 999px; font-size: 11px; font-weight: 700; display: flex; align-items: center; gap: 8px; letter-spacing: 0.1em; text-transform: uppercase;}
 
-        /* GRID PRINCIPAL */
+        /* GRID */
         .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-        @media (min-width: 768px) { .dashboard-grid { grid-template-columns: 1fr 1fr; } }
+        @media (min-width: 992px) { .dashboard-grid { grid-template-columns: 1fr 1fr 1fr; } }
         
-        /* CARDS */
-        .card { background-color: var(--bg-card); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); padding: 24px; display: flex; flex-direction: column; }
-        .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; }
-        .card-header h2 { font-size: 16px; font-weight: 600; font-family: var(--font-display); letter-spacing: 0.05em; }
+        .card { background-color: var(--bg-card); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); padding: 24px; display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+        .card-glow { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.5; }
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; }
+        .card-header h2 { font-size: 15px; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.05em; text-transform: uppercase;}
         .card-header i { color: var(--gold); }
 
-        /* ALVO ÚNICO & POMODORO */
-        .target-input { width: 100%; background: transparent; border: none; border-bottom: 1px dashed var(--gold); color: white; font-size: 18px; padding: 8px 0; margin-bottom: 24px; outline: none; font-family: var(--font-sans); }
+        /* COMPONENTES */
+        .target-input { width: 100%; background: transparent; border: none; border-bottom: 1px dashed var(--gold-dark); color: white; font-size: 16px; padding: 8px 0; margin-bottom: 24px; outline: none; font-family: var(--font-sans); }
         .target-input::placeholder { color: #4b5563; }
-        .timer-display { font-size: 64px; font-weight: 700; text-align: center; font-family: monospace; color: var(--text-main); margin-bottom: 24px; letter-spacing: -2px; }
+        
+        .timer-display { font-size: 56px; font-weight: 700; text-align: center; font-family: monospace; color: var(--text-main); margin-bottom: 24px; letter-spacing: -2px; text-shadow: 0 0 20px rgba(197, 168, 128, 0.2); }
         .timer-controls { display: flex; gap: 12px; justify-content: center; }
-        .btn-icon { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px 24px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-weight: 500; transition: background 0.2s; }
+        .btn-icon { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px 24px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-weight: 600; font-size: 13px; transition: all 0.2s; }
         .btn-icon:hover { background-color: rgba(255,255,255,0.1); }
-        .btn-icon.active { background-color: rgba(197, 168, 128, 0.2); color: var(--gold); border-color: var(--gold); }
+        .btn-icon.active { background-color: rgba(197, 168, 128, 0.15); color: var(--gold); border-color: var(--gold); box-shadow: 0 0 15px rgba(197, 168, 128, 0.2); }
+
+        /* SOM FREQUÊNCIA */
+        .audio-box { background-color: rgba(0,0,0,0.3); border: 1px solid rgba(197,168,128,0.2); border-radius: 8px; padding: 16px; margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+        .audio-info h4 { font-size: 12px; color: var(--gold); margin-bottom: 4px; }
+        .audio-info p { font-size: 10px; color: var(--text-muted); }
+        .btn-audio { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+        .btn-audio.playing { background: var(--gold); color: var(--bg-main); box-shadow: 0 0 15px rgba(197,168,128,0.4); }
 
         /* BRAIN DUMP */
         .dump-input-group { display: flex; gap: 8px; margin-bottom: 16px; }
-        .dump-input { flex: 1; padding: 10px 12px; border-radius: 8px; border: 1px solid #374151; background-color: rgba(0,0,0,0.3); color: white; font-family: var(--font-sans); outline: none; }
+        .dump-input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #374151; background-color: rgba(0,0,0,0.3); color: white; font-family: var(--font-sans); font-size: 13px; outline: none; }
         .dump-input:focus { border-color: #6b7280; }
-        .btn-add { background-color: #374151; color: white; border: none; padding: 0 16px; border-radius: 8px; cursor: pointer; }
-        .dump-list { list-style: none; overflow-y: auto; max-height: 200px; }
-        .dump-item { background-color: rgba(0,0,0,0.2); padding: 10px 12px; border-radius: 6px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); border-left: 2px solid var(--text-muted); }
-        .delete-btn { color: #6b7280; cursor: pointer; border: none; background: none; }
+        .btn-add { background-color: #374151; color: white; border: none; padding: 0 16px; border-radius: 8px; cursor: pointer; transition: 0.2s;}
+        .btn-add:hover { background-color: #4b5563; }
+        .dump-list { list-style: none; overflow-y: auto; flex: 1; margin-bottom: 16px; padding-right: 4px;}
+        .dump-list::-webkit-scrollbar { width: 4px; }
+        .dump-list::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
+        .dump-item { background-color: rgba(0,0,0,0.2); padding: 12px; border-radius: 6px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: flex-start; font-size: 13px; color: #d1d5db; border-left: 2px solid #4b5563; gap: 12px; line-height: 1.4;}
+        .delete-btn { color: #6b7280; cursor: pointer; border: none; background: none; margin-top: 2px;}
         .delete-btn:hover { color: var(--danger); }
+
+        /* MÉTRICAS & CHECKLIST */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+        .stat-box { background-color: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 16px; text-align: center; }
+        .stat-value { font-size: 24px; font-weight: 700; color: var(--gold); font-family: var(--font-display); margin-bottom: 4px; }
+        .stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        .checklist { list-style: none; }
+        .checklist-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .checklist-item:last-child { border-bottom: none; }
+        .check-box { width: 18px; height: 18px; border: 1px solid #4b5563; border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; }
+        .check-box.checked { background-color: var(--success); border-color: var(--success); color: var(--bg-main); }
+        .check-text { font-size: 12px; color: #d1d5db; }
+        .check-box.checked + .check-text { text-decoration: line-through; color: #6b7280; }
 
     </style>
 </head>
@@ -83,10 +105,10 @@
     <div id="login-screen">
         <div class="login-box">
             <div class="login-logo">SBM OS</div>
-            <p>Insira a chave de acesso enviada para o seu e-mail após a compra.</p>
-            <input type="password" id="password-input" class="login-input" placeholder="Sua senha de acesso">
+            <p>Insira a chave de acesso oficial enviada para o seu e-mail.</p>
+            <input type="password" id="password-input" class="login-input" placeholder="•••••••">
             <button class="btn-gold" onclick="checkPassword()">Acessar Sistema</button>
-            <p id="login-error">Chave de acesso incorreta.</p>
+            <p id="login-error">Chave de acesso incorreta ou expirada.</p>
         </div>
     </div>
 
@@ -95,49 +117,62 @@
         <header>
             <div class="brand">
                 <h1>SBM OS</h1>
-                <span>Operating System</span>
+                <span>Operating System • v2.0</span>
             </div>
             <div class="user-stats">
-                <div class="streak-badge">
-                    <i data-lucide="flame" width="16" height="16"></i>
-                    <span id="streak-count">0 Dias</span>
+                <div class="premium-badge">
+                    <i data-lucide="shield-check" width="16" height="16"></i>
+                    <span>Licença Ativa</span>
                 </div>
             </div>
         </header>
 
         <div class="dashboard-grid">
             
-            <!-- COFRE DE FOCO -->
+            <!-- COLUNA 1: COFRE DE FOCO -->
             <div class="card">
+                <div class="card-glow"></div>
                 <div class="card-header">
                     <i data-lucide="crosshair"></i>
                     <h2>Cofre de Foco</h2>
                 </div>
-                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Defina o Alvo Único. Bloqueie o resto.</p>
-                <input type="text" id="target-input" class="target-input" placeholder="Qual é a única tarefa que importa agora?">
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 24px;">Defina o Alvo Único. Elimine o resto.</p>
+                <input type="text" id="target-input" class="target-input" placeholder="Sua única tarefa agora é...">
                 
                 <div class="timer-display" id="timer">25:00</div>
                 
                 <div class="timer-controls">
                     <button class="btn-icon active" id="btn-start" onclick="toggleTimer()">
-                        <i data-lucide="play" id="play-icon" width="18"></i> <span id="btn-text">Iniciar</span>
+                        <i data-lucide="play" id="play-icon" width="16"></i> <span id="btn-text">Iniciar Foco</span>
                     </button>
-                    <button class="btn-icon" onclick="resetTimer()">
-                        <i data-lucide="rotate-ccw" width="18"></i>
+                    <button class="btn-icon" onclick="resetTimer()" title="Reiniciar">
+                        <i data-lucide="rotate-ccw" width="16"></i>
+                    </button>
+                </div>
+
+                <div style="margin-top: 32px;"></div>
+                
+                <div class="audio-box">
+                    <div class="audio-info">
+                        <h4>Bloqueio Sonoro SBM</h4>
+                        <p>Ruído Marrom Neuro-Otimizado</p>
+                    </div>
+                    <button class="btn-audio" id="btn-audio" onclick="toggleAudio()">
+                        <i data-lucide="headphones" width="18"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- BRAIN DUMP -->
+            <!-- COLUNA 2: BRAIN DUMP -->
             <div class="card">
                 <div class="card-header">
                     <i data-lucide="archive"></i>
                     <h2>Brain Dump</h2>
                 </div>
-                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Descarregue ansiedades e tarefas menores para não interromper o fluxo.</p>
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">Surgiu uma ideia ou ansiedade? Escreva aqui e tire da mente.</p>
                 
                 <div class="dump-input-group">
-                    <input type="text" id="dump-input" class="dump-input" placeholder="Estou a pensar em..." onkeypress="handleDumpEnter(event)">
+                    <input type="text" id="dump-input" class="dump-input" placeholder="Lembrar de..." onkeypress="handleDumpEnter(event)">
                     <button class="btn-add" onclick="addDump()">
                         <i data-lucide="plus" width="18"></i>
                     </button>
@@ -148,15 +183,54 @@
                 </ul>
             </div>
 
+            <!-- COLUNA 3: RELATÓRIO NEURAL & ROTINA -->
+            <div class="card">
+                <div class="card-header">
+                    <i data-lucide="activity"></i>
+                    <h2>Relatório Neural</h2>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value" id="stat-cycles">0</div>
+                        <div class="stat-label">Ciclos Completos</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="stat-mins">0</div>
+                        <div class="stat-label">Min. de Foco</div>
+                    </div>
+                </div>
+
+                <div class="card-header" style="margin-top: 16px;">
+                    <i data-lucide="check-square" width="18"></i>
+                    <h2 style="font-size: 13px;">Protocolo de Ativação</h2>
+                </div>
+                
+                <ul class="checklist">
+                    <li class="checklist-item">
+                        <div class="check-box" onclick="toggleCheck(this, 'chk1')" id="chk1"><i data-lucide="check" width="12" style="display:none;"></i></div>
+                        <span class="check-text">Beber 500ml de água ao acordar</span>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="check-box" onclick="toggleCheck(this, 'chk2')" id="chk2"><i data-lucide="check" width="12" style="display:none;"></i></div>
+                        <span class="check-text">10 min de Exposição Solar</span>
+                    </li>
+                    <li class="checklist-item">
+                        <div class="check-box" onclick="toggleCheck(this, 'chk3')" id="chk3"><i data-lucide="check" width="12" style="display:none;"></i></div>
+                        <span class="check-text">Celular noutro cômodo (Bloqueio)</span>
+                    </li>
+                </ul>
+                <button onclick="resetChecklist()" style="background:none; border:none; color:var(--gold); font-size:10px; cursor:pointer; margin-top: 12px; text-decoration: underline;">Resetar Rotina Diária</button>
+            </div>
+
         </div>
     </div>
 
     <script>
-        // INICIALIZA ÍCONES
         lucide.createIcons();
 
-        // 1. SISTEMA DE LOGIN SIMPLES
-        const M_PASS = "SBM2026"; // Esta é a senha que o aluno vai usar
+        // 1. LOGIN
+        const M_PASS = "SBM2026";
         
         window.onload = () => {
             if(localStorage.getItem('sbm_auth') === 'true') {
@@ -178,65 +252,64 @@
             }
         }
 
-        // 2. SISTEMA DE BRAIN DUMP (LOCAL STORAGE)
+        // 2. DADOS & LOCAL STORAGE
         let dumps = [];
+        let stats = { cycles: 0, mins: 0 };
         
         function loadData() {
-            // Load Target
+            // Target
             const savedTarget = localStorage.getItem('sbm_target');
             if(savedTarget) document.getElementById('target-input').value = savedTarget;
+            document.getElementById('target-input').addEventListener('input', (e) => { localStorage.setItem('sbm_target', e.target.value); });
             
-            // Load Dumps
+            // Dumps
             const savedDumps = localStorage.getItem('sbm_dumps');
-            if(savedDumps) {
-                dumps = JSON.parse(savedDumps);
-                renderDumps();
-            }
+            if(savedDumps) { dumps = JSON.parse(savedDumps); renderDumps(); }
             
-            // Auto-save target on typing
-            document.getElementById('target-input').addEventListener('input', (e) => {
-                localStorage.setItem('sbm_target', e.target.value);
+            // Stats
+            const savedStats = localStorage.getItem('sbm_stats');
+            if(savedStats) { stats = JSON.parse(savedStats); updateStatsUI(); }
+
+            // Checklist
+            ['chk1', 'chk2', 'chk3'].forEach(id => {
+                if(localStorage.getItem(id) === 'true') {
+                    const el = document.getElementById(id);
+                    el.classList.add('checked');
+                    el.querySelector('i').style.display = 'block';
+                }
             });
         }
 
-        function handleDumpEnter(e) {
-            if (e.key === 'Enter') addDump();
-        }
-
+        // 3. BRAIN DUMP
+        function handleDumpEnter(e) { if (e.key === 'Enter') addDump(); }
         function addDump() {
             const input = document.getElementById('dump-input');
             const text = input.value.trim();
             if(!text) return;
-            
             dumps.unshift({ id: Date.now(), text: text });
             localStorage.setItem('sbm_dumps', JSON.stringify(dumps));
             input.value = '';
             renderDumps();
         }
-
         function deleteDump(id) {
             dumps = dumps.filter(d => d.id !== id);
             localStorage.setItem('sbm_dumps', JSON.stringify(dumps));
             renderDumps();
         }
-
         function renderDumps() {
             const list = document.getElementById('dump-list');
             list.innerHTML = '';
             dumps.forEach(dump => {
                 const li = document.createElement('li');
                 li.className = 'dump-item';
-                li.innerHTML = `
-                    <span>${dump.text}</span>
-                    <button class="delete-btn" onclick="deleteDump(${dump.id})"><i data-lucide="trash-2" width="14"></i></button>
-                `;
+                li.innerHTML = `<span>${dump.text}</span><button class="delete-btn" onclick="deleteDump(${dump.id})"><i data-lucide="trash-2" width="14"></i></button>`;
                 list.appendChild(li);
             });
             lucide.createIcons();
         }
 
-        // 3. POMODORO TIMER
-        let timeLeft = 25 * 60; // 25 minutes
+        // 4. POMODORO TIMER & STATS
+        let timeLeft = 25 * 60; // 25 min
         let timerId = null;
         let isRunning = false;
 
@@ -244,6 +317,7 @@
             const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
             const s = (timeLeft % 60).toString().padStart(2, '0');
             document.getElementById('timer').textContent = `${m}:${s}`;
+            document.title = isRunning ? `(${m}:${s}) SBM OS` : 'SBM OS - Operating System';
         }
 
         function toggleTimer() {
@@ -255,22 +329,19 @@
                 clearInterval(timerId);
                 icon.setAttribute('data-lucide', 'play');
                 text.textContent = 'Retomar';
-                btn.style.color = "white";
-                btn.style.borderColor = "rgba(255,255,255,0.1)";
+                btn.classList.remove('active');
             } else {
                 timerId = setInterval(() => {
                     timeLeft--;
                     updateTimerDisplay();
                     if(timeLeft <= 0) {
                         clearInterval(timerId);
-                        alert("Sessão de Foco Concluída! Hora de uma pausa de 5 minutos.");
-                        resetTimer();
+                        completeSession();
                     }
                 }, 1000);
                 icon.setAttribute('data-lucide', 'pause');
                 text.textContent = 'Pausar';
-                btn.style.color = "var(--gold)";
-                btn.style.borderColor = "var(--gold)";
+                btn.classList.add('active');
             }
             isRunning = !isRunning;
             lucide.createIcons();
@@ -281,13 +352,83 @@
             isRunning = false;
             timeLeft = 25 * 60;
             updateTimerDisplay();
-            
             const btn = document.getElementById('btn-start');
+            btn.classList.remove('active');
             document.getElementById('play-icon').setAttribute('data-lucide', 'play');
-            document.getElementById('btn-text').textContent = 'Iniciar';
-            btn.style.color = "white";
-            btn.style.borderColor = "rgba(255,255,255,0.1)";
+            document.getElementById('btn-text').textContent = 'Iniciar Foco';
             lucide.createIcons();
+        }
+
+        function completeSession() {
+            alert("Ciclo de Foco Concluído! O seu cérebro merece 5 minutos de pausa offline.");
+            stats.cycles += 1;
+            stats.mins += 25;
+            localStorage.setItem('sbm_stats', JSON.stringify(stats));
+            updateStatsUI();
+            resetTimer();
+        }
+
+        function updateStatsUI() {
+            document.getElementById('stat-cycles').textContent = stats.cycles;
+            document.getElementById('stat-mins').textContent = stats.mins;
+        }
+
+        // 5. CHECKLIST
+        function toggleCheck(element, id) {
+            element.classList.toggle('checked');
+            const isChecked = element.classList.contains('checked');
+            element.querySelector('i').style.display = isChecked ? 'block' : 'none';
+            localStorage.setItem(id, isChecked);
+        }
+        function resetChecklist() {
+            ['chk1', 'chk2', 'chk3'].forEach(id => {
+                localStorage.setItem(id, 'false');
+                const el = document.getElementById(id);
+                el.classList.remove('checked');
+                el.querySelector('i').style.display = 'none';
+            });
+        }
+
+        // 6. ÁUDIO (RUÍDO MARROM WEB API)
+        let audioCtx;
+        let brownNoise;
+        let isPlayingAudio = false;
+
+        function toggleAudio() {
+            const btn = document.getElementById('btn-audio');
+            if(!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                let bufferSize = 2 * audioCtx.sampleRate,
+                noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate),
+                output = noiseBuffer.getChannelData(0);
+                let lastOut = 0;
+                for (let i = 0; i < bufferSize; i++) {
+                    let white = Math.random() * 2 - 1;
+                    output[i] = (lastOut + (0.02 * white)) / 1.02;
+                    lastOut = output[i];
+                    output[i] *= 3.5; 
+                }
+                brownNoise = audioCtx.createBufferSource();
+                brownNoise.buffer = noiseBuffer;
+                brownNoise.loop = true;
+                
+                // Reduzir o volume para ser ambiente
+                let gainNode = audioCtx.createGain();
+                gainNode.gain.value = 0.1;
+                
+                brownNoise.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                brownNoise.start(0);
+            }
+
+            if(isPlayingAudio) {
+                audioCtx.suspend();
+                btn.classList.remove('playing');
+            } else {
+                audioCtx.resume();
+                btn.classList.add('playing');
+            }
+            isPlayingAudio = !isPlayingAudio;
         }
 
     </script>
