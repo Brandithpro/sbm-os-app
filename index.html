@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* VARIÁVEIS DE MARCA SBM */
         :root {
             --bg-main: #0B0F19;
             --bg-card: #151b2b;
@@ -40,7 +39,6 @@
         header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid rgba(197, 168, 128, 0.1); margin-bottom: 32px; }
         .brand h1 { font-family: var(--font-display); font-size: 24px; color: var(--gold); }
         .brand span { font-size: 10px; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
-        .user-stats { display: flex; gap: 16px; align-items: center; }
         .premium-badge { background: linear-gradient(135deg, rgba(197, 168, 128, 0.1) 0%, rgba(197, 168, 128, 0.2) 100%); border: 1px solid rgba(197, 168, 128, 0.3); color: var(--gold); padding: 6px 16px; border-radius: 999px; font-size: 11px; font-weight: 700; display: flex; align-items: center; gap: 8px; letter-spacing: 0.1em; text-transform: uppercase;}
 
         /* GRID */
@@ -55,43 +53,41 @@
 
         /* COMPONENTES */
         .target-input { width: 100%; background: transparent; border: none; border-bottom: 1px dashed var(--gold-dark); color: white; font-size: 16px; padding: 8px 0; margin-bottom: 24px; outline: none; font-family: var(--font-sans); }
-        .target-input::placeholder { color: #4b5563; }
-        
         .timer-display { font-size: 56px; font-weight: 700; text-align: center; font-family: monospace; color: var(--text-main); margin-bottom: 24px; letter-spacing: -2px; text-shadow: 0 0 20px rgba(197, 168, 128, 0.2); }
         .timer-controls { display: flex; gap: 12px; justify-content: center; }
         .btn-icon { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px 24px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-weight: 600; font-size: 13px; transition: all 0.2s; }
-        .btn-icon:hover { background-color: rgba(255,255,255,0.1); }
         .btn-icon.active { background-color: rgba(197, 168, 128, 0.15); color: var(--gold); border-color: var(--gold); box-shadow: 0 0 15px rgba(197, 168, 128, 0.2); }
 
         /* SOM FREQUÊNCIA */
         .audio-box { background-color: rgba(0,0,0,0.3); border: 1px solid rgba(197,168,128,0.2); border-radius: 8px; padding: 16px; margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
-        .audio-info h4 { font-size: 12px; color: var(--gold); margin-bottom: 4px; }
-        .audio-info p { font-size: 10px; color: var(--text-muted); }
-        .btn-audio { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+        .btn-audio { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px; border-radius: 50%; cursor: pointer; transition: 0.2s; }
         .btn-audio.playing { background: var(--gold); color: var(--bg-main); box-shadow: 0 0 15px rgba(197,168,128,0.4); }
 
         /* BRAIN DUMP */
         .dump-input-group { display: flex; gap: 8px; margin-bottom: 16px; }
         .dump-input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #374151; background-color: rgba(0,0,0,0.3); color: white; font-family: var(--font-sans); font-size: 13px; outline: none; }
-        .dump-input:focus { border-color: #6b7280; }
-        .btn-add { background-color: #374151; color: white; border: none; padding: 0 16px; border-radius: 8px; cursor: pointer; transition: 0.2s;}
-        .btn-add:hover { background-color: #4b5563; }
+        .btn-add { background-color: #374151; color: white; border: none; padding: 0 16px; border-radius: 8px; cursor: pointer;}
         .dump-list { list-style: none; overflow-y: auto; flex: 1; margin-bottom: 16px; padding-right: 4px;}
-        .dump-list::-webkit-scrollbar { width: 4px; }
-        .dump-list::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
         .dump-item { background-color: rgba(0,0,0,0.2); padding: 12px; border-radius: 6px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: flex-start; font-size: 13px; color: #d1d5db; border-left: 2px solid #4b5563; gap: 12px; line-height: 1.4;}
         .delete-btn { color: #6b7280; cursor: pointer; border: none; background: none; margin-top: 2px;}
-        .delete-btn:hover { color: var(--danger); }
+
+        /* DOPAMINE METRICS (A NOVIDADE) */
+        .dopamine-box { background-color: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 16px; margin-bottom: 24px; }
+        .dopamine-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .dopamine-title { font-family: monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
+        .dopamine-status { font-size: 10px; color: var(--success); font-weight: 700; letter-spacing: 1px; background: rgba(16, 185, 129, 0.1); padding: 2px 6px; border-radius: 4px; }
+        .progress-labels { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 6px; color: #d1d5db; }
+        .progress-bar-bg { width: 100%; height: 6px; background-color: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dark), var(--gold)); border-radius: 4px; transition: width 0.5s ease-out; }
 
         /* MÉTRICAS & CHECKLIST */
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
-        .stat-box { background-color: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 16px; text-align: center; }
-        .stat-value { font-size: 24px; font-weight: 700; color: var(--gold); font-family: var(--font-display); margin-bottom: 4px; }
-        .stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        .stat-box { background-color: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 12px; text-align: center; }
+        .stat-value { font-size: 20px; font-weight: 700; color: var(--gold); font-family: var(--font-display); margin-bottom: 2px; }
+        .stat-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
         
         .checklist { list-style: none; }
         .checklist-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .checklist-item:last-child { border-bottom: none; }
         .check-box { width: 18px; height: 18px; border: 1px solid #4b5563; border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; }
         .check-box.checked { background-color: var(--success); border-color: var(--success); color: var(--bg-main); }
         .check-text { font-size: 12px; color: #d1d5db; }
@@ -101,7 +97,7 @@
 </head>
 <body>
 
-    <!-- BARREIRA DE LOGIN (Senha: SBM2026) -->
+    <!-- BARREIRA DE LOGIN -->
     <div id="login-screen">
         <div class="login-box">
             <div class="login-logo">SBM OS</div>
@@ -117,7 +113,7 @@
         <header>
             <div class="brand">
                 <h1>SBM OS</h1>
-                <span>Operating System • v2.0</span>
+                <span>Operating System • v3.0</span>
             </div>
             <div class="user-stats">
                 <div class="premium-badge">
@@ -153,12 +149,12 @@
                 <div style="margin-top: 32px;"></div>
                 
                 <div class="audio-box">
-                    <div class="audio-info">
-                        <h4>Bloqueio Sonoro SBM</h4>
-                        <p>Ruído Marrom Neuro-Otimizado</p>
+                    <div style="font-size: 11px;">
+                        <h4 style="color:var(--gold); margin-bottom:2px;">Bloqueio Sonoro SBM</h4>
+                        <p style="color:var(--text-muted); font-size:10px;">Ruído Marrom Neuro-Otimizado</p>
                     </div>
                     <button class="btn-audio" id="btn-audio" onclick="toggleAudio()">
-                        <i data-lucide="headphones" width="18"></i>
+                        <i data-lucide="headphones" width="16"></i>
                     </button>
                 </div>
             </div>
@@ -177,17 +173,29 @@
                         <i data-lucide="plus" width="18"></i>
                     </button>
                 </div>
-
-                <ul class="dump-list" id="dump-list">
-                    <!-- Itens entram aqui -->
-                </ul>
+                <ul class="dump-list" id="dump-list"></ul>
             </div>
 
-            <!-- COLUNA 3: RELATÓRIO NEURAL & ROTINA -->
+            <!-- COLUNA 3: RELATÓRIO NEURAL & DOPAMINA -->
             <div class="card">
                 <div class="card-header">
                     <i data-lucide="activity"></i>
                     <h2>Relatório Neural</h2>
+                </div>
+
+                <!-- NOVA BARRA DE DOPAMINA EXATAMENTE COMO NA LANDING PAGE -->
+                <div class="dopamine-box">
+                    <div class="dopamine-header">
+                        <span class="dopamine-title">DOPAMINE_METRICS.LOG</span>
+                        <span class="dopamine-status">OTIMIZADO</span>
+                    </div>
+                    <div class="progress-labels">
+                        <span>Capacidade de Foco Profundo</span>
+                        <span id="focus-percentage">15%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="focus-progress" style="width: 15%;"></div>
+                    </div>
                 </div>
                 
                 <div class="stats-grid">
@@ -200,27 +208,17 @@
                         <div class="stat-label">Min. de Foco</div>
                     </div>
                 </div>
-
-                <div class="card-header" style="margin-top: 16px;">
-                    <i data-lucide="check-square" width="18"></i>
-                    <h2 style="font-size: 13px;">Protocolo de Ativação</h2>
-                </div>
                 
-                <ul class="checklist">
+                <ul class="checklist" style="margin-top: 8px;">
                     <li class="checklist-item">
                         <div class="check-box" onclick="toggleCheck(this, 'chk1')" id="chk1"><i data-lucide="check" width="12" style="display:none;"></i></div>
                         <span class="check-text">Beber 500ml de água ao acordar</span>
                     </li>
-                    <li class="checklist-item">
-                        <div class="check-box" onclick="toggleCheck(this, 'chk2')" id="chk2"><i data-lucide="check" width="12" style="display:none;"></i></div>
-                        <span class="check-text">10 min de Exposição Solar</span>
-                    </li>
-                    <li class="checklist-item">
+                    <li class="checklist-item" style="border-bottom:none;">
                         <div class="check-box" onclick="toggleCheck(this, 'chk3')" id="chk3"><i data-lucide="check" width="12" style="display:none;"></i></div>
                         <span class="check-text">Celular noutro cômodo (Bloqueio)</span>
                     </li>
                 </ul>
-                <button onclick="resetChecklist()" style="background:none; border:none; color:var(--gold); font-size:10px; cursor:pointer; margin-top: 12px; text-decoration: underline;">Resetar Rotina Diária</button>
             </div>
 
         </div>
@@ -229,8 +227,9 @@
     <script>
         lucide.createIcons();
 
-        // 1. LOGIN
         const M_PASS = "SBM2026";
+        let dumps = [];
+        let stats = { cycles: 0, mins: 0 };
         
         window.onload = () => {
             if(localStorage.getItem('sbm_auth') === 'true') {
@@ -251,27 +250,20 @@
                 document.getElementById('login-error').style.display = 'block';
             }
         }
-
-        // 2. DADOS & LOCAL STORAGE
-        let dumps = [];
-        let stats = { cycles: 0, mins: 0 };
         
         function loadData() {
-            // Target
             const savedTarget = localStorage.getItem('sbm_target');
             if(savedTarget) document.getElementById('target-input').value = savedTarget;
             document.getElementById('target-input').addEventListener('input', (e) => { localStorage.setItem('sbm_target', e.target.value); });
             
-            // Dumps
             const savedDumps = localStorage.getItem('sbm_dumps');
             if(savedDumps) { dumps = JSON.parse(savedDumps); renderDumps(); }
             
-            // Stats
             const savedStats = localStorage.getItem('sbm_stats');
-            if(savedStats) { stats = JSON.parse(savedStats); updateStatsUI(); }
+            if(savedStats) { stats = JSON.parse(savedStats); }
+            updateStatsUI(); 
 
-            // Checklist
-            ['chk1', 'chk2', 'chk3'].forEach(id => {
+            ['chk1', 'chk3'].forEach(id => {
                 if(localStorage.getItem(id) === 'true') {
                     const el = document.getElementById(id);
                     el.classList.add('checked');
@@ -280,13 +272,11 @@
             });
         }
 
-        // 3. BRAIN DUMP
         function handleDumpEnter(e) { if (e.key === 'Enter') addDump(); }
         function addDump() {
             const input = document.getElementById('dump-input');
-            const text = input.value.trim();
-            if(!text) return;
-            dumps.unshift({ id: Date.now(), text: text });
+            if(!input.value.trim()) return;
+            dumps.unshift({ id: Date.now(), text: input.value.trim() });
             localStorage.setItem('sbm_dumps', JSON.stringify(dumps));
             input.value = '';
             renderDumps();
@@ -308,8 +298,7 @@
             lucide.createIcons();
         }
 
-        // 4. POMODORO TIMER & STATS
-        let timeLeft = 25 * 60; // 25 min
+        let timeLeft = 25 * 60;
         let timerId = null;
         let isRunning = false;
 
@@ -317,30 +306,24 @@
             const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
             const s = (timeLeft % 60).toString().padStart(2, '0');
             document.getElementById('timer').textContent = `${m}:${s}`;
-            document.title = isRunning ? `(${m}:${s}) SBM OS` : 'SBM OS - Operating System';
         }
 
         function toggleTimer() {
             const btn = document.getElementById('btn-start');
             const icon = document.getElementById('play-icon');
-            const text = document.getElementById('btn-text');
-
             if (isRunning) {
                 clearInterval(timerId);
                 icon.setAttribute('data-lucide', 'play');
-                text.textContent = 'Retomar';
+                document.getElementById('btn-text').textContent = 'Retomar';
                 btn.classList.remove('active');
             } else {
                 timerId = setInterval(() => {
                     timeLeft--;
                     updateTimerDisplay();
-                    if(timeLeft <= 0) {
-                        clearInterval(timerId);
-                        completeSession();
-                    }
+                    if(timeLeft <= 0) { clearInterval(timerId); completeSession(); }
                 }, 1000);
                 icon.setAttribute('data-lucide', 'pause');
-                text.textContent = 'Pausar';
+                document.getElementById('btn-text').textContent = 'Pausar';
                 btn.classList.add('active');
             }
             isRunning = !isRunning;
@@ -352,15 +335,14 @@
             isRunning = false;
             timeLeft = 25 * 60;
             updateTimerDisplay();
-            const btn = document.getElementById('btn-start');
-            btn.classList.remove('active');
+            document.getElementById('btn-start').classList.remove('active');
             document.getElementById('play-icon').setAttribute('data-lucide', 'play');
             document.getElementById('btn-text').textContent = 'Iniciar Foco';
             lucide.createIcons();
         }
 
         function completeSession() {
-            alert("Ciclo de Foco Concluído! O seu cérebro merece 5 minutos de pausa offline.");
+            alert("Ciclo Concluído! O seu cérebro merece 5 minutos de pausa offline.");
             stats.cycles += 1;
             stats.mins += 25;
             localStorage.setItem('sbm_stats', JSON.stringify(stats));
@@ -371,25 +353,21 @@
         function updateStatsUI() {
             document.getElementById('stat-cycles').textContent = stats.cycles;
             document.getElementById('stat-mins').textContent = stats.mins;
+            
+            // Lógica para a barra DOPAMINE_METRICS
+            // Começa em 15% base e sobe 10% por cada ciclo completo (máximo 100%)
+            let focusLevel = Math.min(100, 15 + (stats.cycles * 10));
+            document.getElementById('focus-percentage').textContent = focusLevel + '%';
+            document.getElementById('focus-progress').style.width = focusLevel + '%';
         }
 
-        // 5. CHECKLIST
         function toggleCheck(element, id) {
             element.classList.toggle('checked');
             const isChecked = element.classList.contains('checked');
             element.querySelector('i').style.display = isChecked ? 'block' : 'none';
             localStorage.setItem(id, isChecked);
         }
-        function resetChecklist() {
-            ['chk1', 'chk2', 'chk3'].forEach(id => {
-                localStorage.setItem(id, 'false');
-                const el = document.getElementById(id);
-                el.classList.remove('checked');
-                el.querySelector('i').style.display = 'none';
-            });
-        }
 
-        // 6. ÁUDIO (RUÍDO MARROM WEB API)
         let audioCtx;
         let brownNoise;
         let isPlayingAudio = false;
@@ -398,9 +376,7 @@
             const btn = document.getElementById('btn-audio');
             if(!audioCtx) {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                let bufferSize = 2 * audioCtx.sampleRate,
-                noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate),
-                output = noiseBuffer.getChannelData(0);
+                let bufferSize = 2 * audioCtx.sampleRate, noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate), output = noiseBuffer.getChannelData(0);
                 let lastOut = 0;
                 for (let i = 0; i < bufferSize; i++) {
                     let white = Math.random() * 2 - 1;
@@ -411,26 +387,16 @@
                 brownNoise = audioCtx.createBufferSource();
                 brownNoise.buffer = noiseBuffer;
                 brownNoise.loop = true;
-                
-                // Reduzir o volume para ser ambiente
                 let gainNode = audioCtx.createGain();
                 gainNode.gain.value = 0.1;
-                
                 brownNoise.connect(gainNode);
                 gainNode.connect(audioCtx.destination);
                 brownNoise.start(0);
             }
-
-            if(isPlayingAudio) {
-                audioCtx.suspend();
-                btn.classList.remove('playing');
-            } else {
-                audioCtx.resume();
-                btn.classList.add('playing');
-            }
+            if(isPlayingAudio) { audioCtx.suspend(); btn.classList.remove('playing'); } 
+            else { audioCtx.resume(); btn.classList.add('playing'); }
             isPlayingAudio = !isPlayingAudio;
         }
-
     </script>
 </body>
 </html>
